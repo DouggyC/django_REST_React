@@ -1,7 +1,7 @@
-from django.urls import path
-from . import views
+from rest_framework import routers
+from .api import LeadViewSet
 
-urlpatterns = [
-  path('api/lead/', views.LeadListCreate.as_view())
-]
+router = routers.DefaultRouter()
+router.register('api/leads', LeadViewSet)
 
+urlpatterns = router.urls

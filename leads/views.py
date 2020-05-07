@@ -1,6 +1,6 @@
 from .models import Lead
-from .serializers import LeadSerializer
 from rest_framework import generics
+from .serializers import LeadSerializer
 
 class LeadListCreate(generics.ListCreateAPIView):
   queryset = Lead.objects.all()
