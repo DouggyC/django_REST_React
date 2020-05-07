@@ -22,6 +22,11 @@ export class Form extends Component {
     }
     
     this.props.addLead(lead)
+    this.setState({
+      name: '',
+      email: '',
+      message: ''
+    })
   }
 
   render() {
