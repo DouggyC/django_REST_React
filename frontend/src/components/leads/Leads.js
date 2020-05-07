@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { getLeads, deleteLead } from "../../actions/leads";
 
 export class Leads extends Component {
   componentDidMount() {
     this.props.getLeads();
   }
-
-  doDeleteLead = (id) => this.props.deleteLead(id)
 
   render() {
     return (
@@ -31,10 +29,9 @@ export class Leads extends Component {
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
                 <td>
-                  <button 
+                  <button
                     className="btn btn-danger btn-sm"
-                    // onClick={(lead) => this.props.deleteLead(lead.id)}
-                    onClick={() => this.doDeleteLead(lead.id)}
+                    onClick={() => this.props.deleteLead(lead.id)}
                   >
                     delete
                   </button>
@@ -48,9 +45,11 @@ export class Leads extends Component {
   }
 }
 
-// const mapDispatchToProps = () => ({
-//     doGetLeads: getLeads()
-// })
+Leads.propTypes = {
+  leads: PropTypes.array.isRequired,
+  getLeads: PropTypes.func.isRequired,
+  deleteLead: PropTypes.func.isRequired
+}
 
 const mapStateToProps = (state) => ({
   leads: state.leads.leads,
